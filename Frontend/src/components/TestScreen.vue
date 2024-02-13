@@ -66,8 +66,7 @@
             <v-col
               v-for="(option, index) in getOptions()"
               :key="index + 1"
-              cols="6"
-            >
+              cols="6">
               <v-radio
                 color="#4B9AFA"
                 :label="option"
@@ -145,7 +144,7 @@
                   transition: { duration: 500, delay: 500, ease: 'easeInOut' },
                 }"
               >
-                <p>{{ percentageCorrectnew }}%</p>
+              <p>{{ Math.floor(percentageCorrectnew) }}%</p>
               </span>
             </div>
           </div>

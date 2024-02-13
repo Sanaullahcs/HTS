@@ -43,8 +43,8 @@
                       <p class="stepperFirstHead">
                         Step <span class="stepperFirstHead-txt">01</span>/05
                       </p>
-                      <p class="stepperSecondHead">Interviewee Name</p>
-                      <v-text-field placeholder="Interviewee name..."></v-text-field>
+                      <p class="stepperSecondHead">Candidate Name</p>
+                      <v-text-field placeholder="Candidate Name.."></v-text-field>
                     </div>
                   </v-stepper-window-item>
                   <!-- ===================== -->
@@ -61,8 +61,8 @@
                         <p class="stepperFirstHead">
                           Step <span class="stepperFirstHead-txt">01</span>/05
                         </p>
-                        <p class="stepperSecondHead">Interviewee Name</p>
-                        <v-text-field class="textField" variant="outlined" placeholder="Interviewee name"
+                        <p class="stepperSecondHead">Candidate Name</p>
+                        <v-text-field class="textField" variant="outlined" placeholder="Candidate Name"
                           v-model="intervieweeName"></v-text-field>
                         <div>
                           <v-btn @click="moveToNextStep" class="view-detail continueBTN"
@@ -70,17 +70,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div>
-                                            <p class="stepperFirstHead">Step <span class="stepperFirstHead-txt">01</span>/05
-                                            </p>
-                                            <p class="stepperSecondHead">Interviewee Name</p>
-                                            <v-text-field class="textField" variant="outlined"
-                                                placeholder="Interviewee name..." v-model="intervieweeName"></v-text-field>
-                                            <div>
-                                                <v-btn @click="moveToNextStep" class="view-detail continueBTN"
-                                                    :disabled="!isStepValid(1)">Next</v-btn>
-                                            </div>
-                                        </div> -->
                   </v-stepper-window-item>
                   <v-stepper-window-item class="stepperScrollingWindow">
                     <div v-motion :initial="{ opacity: 0 }" :enter="{
@@ -229,7 +218,7 @@
                           <img :src="profUrl" alt="" />
                         </span>
                         <div class="reviewCardtxtHolder">
-                          <p class="label">Interviewee name</p>
+                          <p class="label">Candidate Name</p>
                           <p class="labelTxt">
                             <!-- John Wick -->
                             {{ intervieweeName }}
@@ -368,7 +357,7 @@ export default {
     experience: "",
     email: "",
     items: [
-      "Interviewee Name",
+      "Candidate Name",
       "Interviewer Name",
       "Position applied for",
       "Experience",
@@ -383,7 +372,7 @@ export default {
     },
     editIntervieweeName() {
       this.showReview = false;
-      this.step = this.items.indexOf("Interviewee Name") + 1;
+      this.step = this.items.indexOf("Candidate Name") + 1;
       window.scrollTo(0, 0);
     },
     editInterviewerName() {
