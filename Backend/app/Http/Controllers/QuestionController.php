@@ -75,22 +75,23 @@ class QuestionController extends Controller
         $candidate = Candidate::find($id);
         // $question = Question::where('position_id', $candidate->post_applied_for)->inRandomOrder()->limit(10)->get();
 
-                $questionsForPositionId9 = Question::where('position_id', 9)
-                ->inRandomOrder()
-                ->limit(6)
-                ->get();
+                // $questionsForPositionId9 = Question::where('position_id', 9)
+                // ->inRandomOrder()
+                // ->limit(6)
+                // ->get();
             
             $questionsForCandidatePosition = Question::where('position_id', $candidate->post_applied_for)
                 ->inRandomOrder()
-                ->limit(6)
+                ->limit(20)
                 ->get();
             
-            $questionsForPositionId10 = Question::where('position_id', 10)
-                ->inRandomOrder()
-                ->limit(8)
-                ->get();
+            // $questionsForPositionId10 = Question::where('position_id', 10)
+            //     ->inRandomOrder()
+            //     ->limit(8)
+            //     ->get();
             
-            $question = $questionsForPositionId9->concat($questionsForCandidatePosition)->concat($questionsForPositionId10);
+            // $question = $questionsForPositionId9->concat($questionsForCandidatePosition)->concat($questionsForPositionId10);
+            $question = $questionsForCandidatePosition;
 
         if ($question) {
 

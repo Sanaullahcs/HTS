@@ -121,14 +121,15 @@
                           color: rgba(75, 154, 250, 0.8);
                         ">
                         <option disabled value="">Select Position</option>
-                        <option value="Laravel">Laravel</option>
-                        <option value="IOS">IOS</option>
-                        <option value="Android">Android</option>
-                        <option value="PHP">PHP</option>
-                        <option value="SQA">SQA</option>
-                        <option value="UI/UX">UI/UX</option>
-                        <option value="React">React</option>
-                        <option value="Vue">Vue</option>
+                        <!-- <option value="1">Laravel</option>
+                        <option value="2">IOS</option>
+                        <option value="3">Android</option>
+                        <option value="4">PHP</option>
+                        <option value="5">SQA</option>
+                        <option value="6">UI/UX</option>
+                        <option value="7">React</option>
+                        <option value="8">Vue</option> -->
+                        <option value="11">Internship</option>
                       </select>
                       <div>
                         <v-btn @click="moveToNextStep" class="view-detail continueBTN"
