@@ -413,7 +413,7 @@ export default {
 
         // Make a POST request to your API endpoint
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/createcandidate",
+          "https://quizapis.tabsgi.com/api/createcandidate",
           postData
         );
 

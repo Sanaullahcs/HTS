@@ -87,7 +87,7 @@ export default {
       try {
       
         // Make a get request for the api which get question related to candidate
-        const response = await axios.get(`http://127.0.0.1:8000/api/generatequiz/${candidateId}/`);
+        const response = await axios.get(`https://quizapis.tabsgi.com/api/generatequiz/${candidateId}`);
 
           this.questions=response.data.questions;
         //   this.candidate_id=response.data.candidate_id;
