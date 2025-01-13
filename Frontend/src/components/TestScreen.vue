@@ -214,7 +214,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "vue-chartjs";
 // import * as chartConfig from './chartConfig.js'
 import down from "../assets/imgs/down.png";
-import { data, options } from "./chartConfig";
+import { data } from "./chartConfig";
 import FooterCom from "../components/helperComponents/FooterCom.vue";
 import axios from "axios";
 
@@ -247,7 +247,7 @@ export default {
       down: down,
       chartConfig: {
         data,
-        n   ,
+        
         // other chart configurations...
       },
     };
@@ -269,14 +269,16 @@ export default {
     // use async to store data
     async getquestion(candidateId) {
       try {
+        console.log(process.env.VUE_APP_BASEURL,"--------------------VUE_APP_BASEURL-------------------------");
+        let BASEURL = process.env.VUE_APP_BASEURL
         const response = await axios.get(
-          `/api/generatequiz/${candidateId}`
+          `${BASEURL}/api/generatequiz/${candidateId}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         this.questions = response.data.questions;
         this.loading = false; // Set loading to false once questions are fetched
       } catch (error) {
-        // console.error("Error:", error);
+        console.error("Error:", error);
       }
     },
 
@@ -398,19 +400,20 @@ export default {
       // );
 
       try {
+        let BASEURL = process.env.VUE_APP_BASEURL
         // Replace 'YOUR_API_ENDPOINT' with the actual endpoint for storing the quiz
         const response = await axios.post(
-          `https://quizapis.tabsgi.com/api/storequiz`,
+          `${BASEURL}/api/storequiz`,
           {
             candidateId: this.$route.params.id,
             selectedAnswers: this.selectedAnswers,
           }
         );
 
-        // console.log("Quiz data posted successfully:", response.data);
+        console.log("Quiz data posted successfully:", response.data);
         // Optionally, you can perform additional actions based on the API response
       } catch (error) {
-        // console.error("Error posting quiz data:", error);
+        console.error("Error posting quiz data:", error);
         // Handle errors as needed
       }
     },

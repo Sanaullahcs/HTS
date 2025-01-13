@@ -216,7 +216,8 @@ export default {
         // get all candidate when page load
         async getCandidate() {
             try {
-                const response = await axios.get('http://localhost:8000/api/testcandidate');
+                let BASEURL = process.env.VUE_APP_BASEURL
+                const response = await axios.get(`${BASEURL}/api/testcandidate`);
 
                 this.desserts = response.data.data;
                 console.log(this.desserts);
