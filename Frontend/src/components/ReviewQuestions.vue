@@ -85,10 +85,11 @@ export default {
        // use async to store data
        async getquestion(candidateId) {
       try {
-      
-        // Make a get request for the api which get question related to candidate
-        const response = await axios.get(`http://127.0.0.1:8000/api/generatequiz/${candidateId}/`);
+ 
+        let BASEURL = process.env.VUE_APP_BASEURL
 
+        // Make a get request for the api which get question related to candidate
+        const response = await axios.get(`${BASEURL}/api/generatequiz/${candidateId}`);
           this.questions=response.data.questions;
         //   this.candidate_id=response.data.candidate_id;
             // this.$router.push('/review/'+response.data.candidate_id);

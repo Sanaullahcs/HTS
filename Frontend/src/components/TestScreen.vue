@@ -66,8 +66,7 @@
             <v-col
               v-for="(option, index) in getOptions()"
               :key="index + 1"
-              cols="6"
-            >
+              cols="6">
               <v-radio
                 color="#4B9AFA"
                 :label="option"
@@ -145,7 +144,7 @@
                   transition: { duration: 500, delay: 500, ease: 'easeInOut' },
                 }"
               >
-                <p>{{ percentageCorrectnew }}%</p>
+              <p>{{ Math.floor(percentageCorrectnew) }}%</p>
               </span>
             </div>
           </div>
@@ -215,7 +214,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "vue-chartjs";
 // import * as chartConfig from './chartConfig.js'
 import down from "../assets/imgs/down.png";
-import { data, options } from "./chartConfig";
+import { data } from "./chartConfig";
 import FooterCom from "../components/helperComponents/FooterCom.vue";
 import axios from "axios";
 
@@ -248,7 +247,7 @@ export default {
       down: down,
       chartConfig: {
         data,
-        options,
+        
         // other chart configurations...
       },
     };
@@ -259,10 +258,10 @@ export default {
     },
   },
   mounted() {
-    console.log(
-      "Component mounted. Current question:",
-      this.questions[this.currentQuestion]
-    );
+    // console.log(
+    //   "Component mounted. Current question:",
+    //   this.questions[this.currentQuestion]
+    // );
     const candidateId = this.$route.params.id;
     this.getquestion(candidateId);
   },
@@ -270,8 +269,10 @@ export default {
     // use async to store data
     async getquestion(candidateId) {
       try {
+        console.log(process.env.VUE_APP_BASEURL,"--------------------VUE_APP_BASEURL-------------------------");
+        let BASEURL = process.env.VUE_APP_BASEURL
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/generatequiz/${candidateId}/`
+          `${BASEURL}/api/generatequiz/${candidateId}`
         );
         console.log(response.data);
         this.questions = response.data.questions;
@@ -307,8 +308,8 @@ export default {
         const currentQuestion = this.questions[this.currentQuestion];
         const correctOption = parseInt(currentQuestion.correct_opt);
 
-        console.log("Selected Answer:", this.selectedAnswer);
-        console.log("Correct Option:", correctOption);
+        // console.log("Selected Answer:", this.selectedAnswer);
+        // console.log("Correct Option:", correctOption);
 
         if (this.selectedAnswer === correctOption) {
           // If the selected answer is correct
@@ -324,23 +325,23 @@ export default {
           selectedAnswer: this.selectedAnswer,
         });
 
-        console.log("Selected Answers:", this.selectedAnswers);
-        console.log("Correct Answers:", this.correctAnswersCount);
-        console.log("Wrong Answers:", this.wrongAnswersCount);
+        // console.log("Selected Answers:", this.selectedAnswers);
+        // console.log("Correct Answers:", this.correctAnswersCount);
+        // console.log("Wrong Answers:", this.wrongAnswersCount);
 
         this.currentQuestion++;
         this.selectedAnswer = null;
 
-        console.log("Current Question:", this.currentQuestion);
-        console.log("Total Questions:", this.questions.length);
+        // console.log("Current Question:", this.currentQuestion);
+        // console.log("Total Questions:", this.questions.length);
 
         if (this.currentQuestion === this.questions.length) {
           this.testCompleted = true; // Set the flag to true if the last question is reached
-          console.log("Test completed. Flag set to true.");
-          console.log(
-            "All questions completed. Selected answers:",
-            this.selectedAnswers
-          );
+          // console.log("Test completed. Flag set to true.");
+          // console.log(
+          //   "All questions completed. Selected answers:",
+          //   this.selectedAnswers
+          // );
         }
       } else {
         alert("Please select an answer before moving to the next question.");
@@ -392,16 +393,17 @@ export default {
         percentageWrong,
       ];
       this.percentageCorrectnew = percentageCorrect;
-      console.log(
-        percentageCorrect,
-        percentageWrong,
-        this.percentageCorrectnew
-      );
+      // console.log(
+      //   percentageCorrect,
+      //   percentageWrong,
+      //   this.percentageCorrectnew
+      // );
 
       try {
+        let BASEURL = process.env.VUE_APP_BASEURL
         // Replace 'YOUR_API_ENDPOINT' with the actual endpoint for storing the quiz
         const response = await axios.post(
-          `http://127.0.0.1:8000/api/storequiz`,
+          `${BASEURL}/api/storequiz`,
           {
             candidateId: this.$route.params.id,
             selectedAnswers: this.selectedAnswers,

@@ -33,7 +33,7 @@ export default {
         };
     },
     mounted() {
-        this.typeText("TGI Testing  System");
+        this.typeText("Hiring Pro");
     },
     methods: {
         async typeText(text) {
