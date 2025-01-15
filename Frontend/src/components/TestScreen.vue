@@ -271,8 +271,14 @@ export default {
       try {
         console.log(process.env.VUE_APP_BASEURL,"--------------------VUE_APP_BASEURL-------------------------");
         let BASEURL = process.env.VUE_APP_BASEURL
+        const headers = {
+      'Content-Type': 'application/json',
+      withCredentials: true
+    };
         const response = await axios.get(
-          `${BASEURL}/api/generatequiz/${candidateId}`
+          `${BASEURL}/api/generatequiz/${candidateId}`,{
+      headers,
+    }
         );
         console.log(response.data);
         this.questions = response.data.questions;

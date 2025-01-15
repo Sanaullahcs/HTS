@@ -131,10 +131,15 @@ export default {
 
         async fetchData(candidateId) {
             try {
-
+                const headers = {
+      'Content-Type': 'application/json',
+      withCredentials: true
+    };
                 // console.log(candidateId)
                 // Fetch candidate information
-                const candidateResponse = await axios.get(`http://localhost:8000/api/testresult/${candidateId}`);
+                const candidateResponse = await axios.get(`http://localhost:8000/api/testresult/${candidateId}`,{
+      headers,
+    });
 
                 this.candidate = candidateResponse.data;
                 console.log(candidateResponse.data);
@@ -192,7 +197,7 @@ export default {
             return content;
         },
         // renderQuestions() {
-        //   // Customize the rendering of questions based on your data
+        //   // Customize the r  endering of questions based on your data
         //   return this.questions.map((question) => `
         //     <div>
         //       <p>Question: ${question.question}</p>

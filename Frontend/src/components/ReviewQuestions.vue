@@ -85,11 +85,16 @@ export default {
        // use async to store data
        async getquestion(candidateId) {
       try {
- 
+        const headers = {
+      'Content-Type': 'application/json',
+      withCredentials: true
+    };
         let BASEURL = process.env.VUE_APP_BASEURL
 
         // Make a get request for the api which get question related to candidate
-        const response = await axios.get(`${BASEURL}/api/generatequiz/${candidateId}`);
+        const response = await axios.get(`${BASEURL}/api/generatequiz/${candidateId}`,{
+      headers,
+    });
           this.questions=response.data.questions;
         //   this.candidate_id=response.data.candidate_id;
             // this.$router.push('/review/'+response.data.candidate_id);

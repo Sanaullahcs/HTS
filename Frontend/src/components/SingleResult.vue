@@ -212,8 +212,14 @@ export default {
         // get all candidate when page load
         async getCandidate(candidateId) {
             try {
+                const headers = {
+      'Content-Type': 'application/json',
+      withCredentials: true
+    };
                 // Replace with the actual candidate ID
-                const response = await axios.get(`http://localhost:8000/api/testresult/${candidateId}`);
+                const response = await axios.get(`http://localhost:8000/api/testresult/${candidateId}`,{
+      headers,
+    });
 
                 console.log(response.data.data);
 

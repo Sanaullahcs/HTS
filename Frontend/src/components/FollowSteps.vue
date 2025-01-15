@@ -546,11 +546,17 @@ export default {
         };
         let APPURL = process.env.VUE_APP_BASEURL;
         console.log("APPURL", APPURL);
-
+        const headers = {
+      'Content-Type': 'application/json',
+      withCredentials: true
+    };
         // Make a POST request to your API endpoint
         const response = await axios.post(
           `${APPURL}/api/createcandidate`,
           postData
+          ,{
+      headers,
+    }
         );
 
         // send response.data to review page
